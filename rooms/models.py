@@ -1,6 +1,7 @@
 from django.db import models
+from common.models import CommonModel
 
-class Romm(models.Model):
+class Romm(CommonModel):
 
     """ Romm Model Difinition"""
 
@@ -15,13 +16,14 @@ class Romm(models.Model):
     rooms = models.PositiveIntegerField()
     toilet = models.PositiveIntegerField()
     description = models.TextField()
-    address = models.CharField(max_langth=250, )
+    address = models.CharField(max_length=250, )
     pet_friendly = models.BooleanField(default=True)
-    kind = models.CharField(max_length=20, choices=RoomKindChoices, )
+    kind = models.CharField(max_length=20, choices=RoomKindChoices.choices, )
     owner = models.ForeignKey("users.User", on_delete=models.CASCADE, )
     amenities = models.ManyToManyField("rooms.Amenity", )
 
-    class Amenity(models.Model):
+
+    class Amenity(CommonModel):
 
         """Amenity Definition"""
 
