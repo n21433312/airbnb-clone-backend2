@@ -19,6 +19,7 @@ class Romm(models.Model):
     pet_friendly = models.BooleanField(default=True)
     kind = models.CharField(max_length=20, choices=RoomKindChoices, )
     owner = models.ForeignKey("users.User", on_delete=models.CASCADE, )
+    amenities = models.ManyToManyField("rooms.Amenity", )
 
     class Amenity(models.Model):
 
