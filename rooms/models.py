@@ -1,7 +1,7 @@
 from django.db import models
 from common.models import CommonModel
 
-class Romm(CommonModel):
+class Room(CommonModel):
 
     """ Romm Model Difinition"""
 
@@ -23,10 +23,10 @@ class Romm(CommonModel):
     amenities = models.ManyToManyField("rooms.Amenity", )
 
 
-    class Amenity(CommonModel):
+class Amenity(CommonModel):
 
-        """Amenity Definition"""
+    """Amenity Definition"""
 
-        name = models.CharField(max_length=150, )
-        description = models.CharField(max_length=150, default="", ) #default ="" 또는 null=True
+    name = models.CharField(max_length=150, )
+    description = models.CharField(max_length=150, default="", blank=True) #default ="" 또는 null=True, 앞은DB가 null가능하다 뒤는 Django from에서 공백이 가능하다 서로 다름
 
