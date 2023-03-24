@@ -15,6 +15,8 @@ class Experience(CommonModel):
     end = models.TimeField()
     description = models.TextField()
     perks = models.ManyToManyField("experiences.Perk", )
+    category = models.ForeignKey("categories.Category", blank=True, null=True, on_delete=models.SET_NULL, ) # 카테고리지워져도 Experiences가 지워지지 않게하기위해 + 값이 없어도 되게하기
+
 
     def __str__(self) -> str:
        return  self.name
@@ -26,6 +28,7 @@ class Perk(CommonModel):
     name = models.CharField(max_length=100, )
     details = models.CharField(max_length=250,blank=True, null=True,  )
     explanation = models.TextField(blank=True, null=True)
+    
 
     def __str__(self) -> str:
         return self.name

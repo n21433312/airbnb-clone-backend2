@@ -22,6 +22,7 @@ class Room(CommonModel):
     kind = models.CharField(max_length=20, choices=RoomKindChoices.choices, )
     owner = models.ForeignKey("users.User", on_delete=models.CASCADE, )
     amenities = models.ManyToManyField("rooms.Amenity", )
+    category = models.ForeignKey("categories.Category", blank=True, null=True, on_delete=models.SET_NULL, )
 
     def __str__(self):
         return self.name
@@ -38,4 +39,4 @@ class Amenity(CommonModel):
         return self.name
     
     class Meta:
-        verbose_name_plural = "Amenities"
+        verbose_name_plural = "Amenities" #잘못된복수형 수정
