@@ -14,12 +14,20 @@ class RoomAdmin(admin.ModelAdmin):
         "created_at",
     )
 
+
+
     list_filter = (
         "country",
         "city",
         "pet_friendly",
         "kind",
         "amenities",
+        "created_at",
+        "updated_at",
+    )
+
+    search_fields = (
+        "owner__username", #^onwer__username으로 하면 시작하는 단어로 검색가능startswith,=owner_username는 완전히 동일한 값 검색
     )
 
     
