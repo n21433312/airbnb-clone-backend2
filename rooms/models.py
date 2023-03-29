@@ -36,8 +36,8 @@ class Room(CommonModel):
             return "No Reviews"
         else:
             total_rating = 0
-            for review in room.reviews.all():
-                total_rating += review.rating
+            for review in room.reviews.all().values("rating"):
+                total_rating += review["rating"]
                 return round(total_rating / count, 2)         
  
 
