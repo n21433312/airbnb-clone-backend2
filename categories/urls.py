@@ -2,7 +2,25 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.Categories.as_view()), #calss를 불러올려면 as_view를 써야함
-    path("<int:pk>", views.CategoryDetail.as_view())
+    path(
+        "", 
+        views.CategoryViewSet.as_view(
+            {
+                "get": "list",
+                "post":"create",
+            }
+        ),
+    ),
+    
+    path(
+        "<int:pk>", #ViewSet은 pk를 반드시 받기때문에 반드시 넣어줘야한다
+        views.CategoryViewSet.as_view(
+            {
+                "get":"retrieve",
+                "put":"partial_update",
+                "delete":"destroy",
+            }
+        ),
+    )
 
 ]

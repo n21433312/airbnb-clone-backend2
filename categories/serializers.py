@@ -1,19 +1,8 @@
 from rest_framework import serializers
 from .models import Category
 
-class CategorySerializer(serializers.Serializer):
+class CategorySerializer(serializers.ModelSerializer):
 
-    
-    pk = serializers.IntegerField(read_only=True) # read_only=True 유저에게 값을 받지않을때 사용
-    name = serializers.CharField(required=True, max_length=50, )
-    kind = serializers.ChoiceField(choices=Category.CategoryKindChoices.choices, )
-    created_at = serializers.DateTimeField(read_only=True)
-
-    def create(self, validated_data):
-       return Category.objects.create(**validated_data)
-    
-    def update(self, instance, validated_data):
-        instance.name = validated_data.get("name", instance.name)
-        instance.kind = validated_data.get("kind", instance.kind)
-        instance.save()
-        return instance
+    class Meta:
+        model = Category
+        fields =  "__all__" #필드를 하나씩 보여주거나 몇몇개를 제외하거나 전부 보여줄수 있음.
