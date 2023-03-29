@@ -11,8 +11,11 @@ def categories(request):
         serializer = CategorySerializer(all_categories, many=True)
         return Response(serializer.data)
     elif request.method == "POST":
-        print(request.data)
-        return Response({"created": True})
+        serializer = CategorySerializer(data=request.data)
+        if serializer.is_valid(): #is_valid 유저가 보낸 데이터가 유효한지 검사하는기능
+            return Response({"created": True}) 
+        else:
+            return Response(serializer.errors) 
 
 @api_view()
 def category(request, pk):
