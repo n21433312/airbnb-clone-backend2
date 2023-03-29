@@ -13,7 +13,8 @@ def categories(request):
     elif request.method == "POST":
         serializer = CategorySerializer(data=request.data)
         if serializer.is_valid(): #is_valid 유저가 보낸 데이터가 유효한지 검사하는기능
-            return Response({"created": True}) 
+            new_category = serializer.save()
+            return Response(CategorySerializer(new_category).data, ) 
         else:
             return Response(serializer.errors) 
 
