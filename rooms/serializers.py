@@ -15,9 +15,9 @@ class AmenitySerializer(ModelSerializer):
 
 class RoomDetailSerializer(ModelSerializer):
 
-    owner = TinyUserSErializer()
-    amenities = AmenitySerializer(many=True)
-    category = CategorySerializer()
+    owner = TinyUserSErializer(read_only=True) # 유저가 수정할수 없게 함
+    amenities = AmenitySerializer(read_only=True,many=True)
+    category = CategorySerializer(read_only=True)
 
     class Meta:
         model = Room
