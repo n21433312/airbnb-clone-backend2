@@ -5,7 +5,7 @@ class Photo(CommonModel):
 
     file = models.URLField()
     description = models.CharField(max_length=150, )
-    room = models.ForeignKey("rooms.Room", null=True, blank=True, on_delete=models.CASCADE, )
+    room = models.ForeignKey("rooms.Room", null=True, blank=True, on_delete=models.CASCADE, related_name="photos", )
     experience = models.ForeignKey("experiences.Experience", null=True, blank=True, on_delete=models.CASCADE, )
     
     def __str__(self):
