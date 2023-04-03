@@ -6,6 +6,7 @@ from rest_framework.status import HTTP_204_NO_CONTENT
 from .models import Amenity, Room
 from categories.models import Category
 from .serializers import AmenitySerializer, RoomListSerializer, RoomDetailSerializer
+from reviews.serializers import ReviewSerializer
 
 class Amenities(APIView):
 
@@ -152,3 +153,25 @@ class RoomDetail(APIView):
             raise PermissionDenied
         room.delete()
         return Response(status=HTTP_204_NO_CONTENT)
+    
+
+class RoomReviews(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Room.objects.get(pk=pk)
+        except Room.DoesNotExist:
+            raise NotFound
+        
+    def get(self, request, pk):
+        try: #입력값이 문자일경우 바꿀수 없기에 설정해준다
+            page = request.query_params.get("page", 1) #page를 보내지않으면 기본으로 1로 설정
+            page = int(page) # str이기에 int형으로 변경
+        except ValueError:
+            page = 1
+        page_size = 3
+        start = (page-1) * page_size
+        end = start + page_size
+        room = self.get_object(pk)
+        serializer = ReviewSerializer(room.reviews.all()[start:end], many=True)
+        return Response(serializer.data)
