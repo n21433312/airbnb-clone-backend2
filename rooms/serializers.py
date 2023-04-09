@@ -39,7 +39,8 @@ class RoomDetailSerializer(serializers.ModelSerializer):
     
     def get_is_liked(self, room):
         request = self.context["request"]
-        return Wishlist.objects.filter(user=request.user, rooms__id=room.pk).exists()
+        if request.user.is_authenticated: # admin패널에서 로그아웃했을경우 생기는 오류를 막기위한 코드
+            return Wishlist.objects.filter(user=request.user, rooms__id=room.pk).exists()
 
 
 
