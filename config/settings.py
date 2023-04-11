@@ -202,8 +202,7 @@ else:
     CSRF_TRUSTED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
 
 
-
-
+CORS_ALLOWED_CREDENTIALS = True
 GH_SECRET = env("GH_SECRET")
 
 if not DEBUG:
