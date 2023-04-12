@@ -78,10 +78,10 @@ SYSTEM_APPS = [
 INSTALLED_APPS = SYSTEM_APPS + THIRD_PARTY_APPS + CUSTOM_APPS  
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -195,14 +195,13 @@ REST_FRAMEWORK = {
 
 if DEBUG:
     CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3000"]
-    CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
+    CORS_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
 
 else:
     CORS_ALLOWED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
-    CSRF_TRUSTED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
-    
+    CORS_TRUSTED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
 
-CORS_ALLOWED_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
 
 
 GH_SECRET = env("GH_SECRET")
