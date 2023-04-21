@@ -35,7 +35,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = "RENDER" not in os.environ
 
 ALLOWED_HOSTS = [
-    "localhost", "127.0.0.1", "https://airbnb-frontend-mv3z.onrender.com", "https://airbnbclone-za96.onrender.com", "https://backend.chovychovy.xyz/"
+    "localhost", "127.0.0.1", "https://airbnb-frontend-mv3z.onrender.com", "https://airbnbclone-za96.onrender.com", "https://backend.chovychovy.xyz"
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
