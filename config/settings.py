@@ -35,7 +35,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = "RENDER" not in os.environ
 
 ALLOWED_HOSTS = [
-    "localhost", "127.0.0.1", "https://airbnb-frontend-mv3z.onrender.com", "https://airbnbclone-za96.onrender.com",
+    "localhost", "127.0.0.1", "https://airbnb-frontend-mv3z.onrender.com", "https://airbnbclone-za96.onrender.com", "https://backend.chovychovy.xyz/"
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -198,8 +198,8 @@ if DEBUG:
     CORS_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
 
 else:
-    CORS_ALLOWED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
-    CORS_TRUSTED_ORIGINS = ["https://airbnb-frontend-mv3z.onrender.com"]
+    CORS_ALLOWED_ORIGINS = ["https://chovychovy.xyz"]
+    CORS_TRUSTED_ORIGINS = ["https://chovychovy.xyz"]
 
 CORS_ALLOW_CREDENTIALS = True
 
