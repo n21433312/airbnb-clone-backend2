@@ -14,6 +14,7 @@ class AmenitySerializer(serializers.ModelSerializer):
             "pk",
             "name",
             "description",
+            "long_description",
         )
 
 

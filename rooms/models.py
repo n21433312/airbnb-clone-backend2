@@ -17,6 +17,7 @@ class Room(CommonModel):
     rooms = models.PositiveIntegerField()
     toilets = models.PositiveIntegerField()
     description = models.TextField()
+    long_description = models.TextField(default="")
     address = models.CharField(max_length=250, )
     pet_friendly = models.BooleanField(default=True)
     kind = models.CharField(max_length=20, choices=RoomKindChoices.choices, )
@@ -47,6 +48,7 @@ class Amenity(CommonModel):
 
     name = models.CharField(max_length=150, )
     description = models.CharField(max_length=150, default="", blank=True) #default ="" 또는 null=True, 앞은DB가 null가능하다 뒤는 Django from에서 공백이 가능하다 서로 다름
+    long_description = models.CharField(max_length=150, default="", blank=True)
 
     def __str__(self) -> str:
         return self.name
