@@ -177,7 +177,7 @@ class KakaoLogIn(APIView):
                 data={
                     "grant_type": "authorization_code",
                     "client_id": "7a12da799e8d897b8f936259a2fe6c03",
-                    "redirect_uri": "http://chovychovy.xyz/social/kakao",
+                    "redirect_uri": "https://chovychovy.xyz/social/kakao",
                     "code" : code,
                 },
             )

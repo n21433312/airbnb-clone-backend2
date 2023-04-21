@@ -35,7 +35,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = "RENDER" not in os.environ
 
 ALLOWED_HOSTS = [
-    "localhost", "127.0.0.1", "https://airbnb-frontend-mv3z.onrender.com", "https://airbnbclone-za96.onrender.com", "https://backend.chovychovy.xyz"
+    "localhost", "127.0.0.1", "airbnb-frontend-mv3z.onrender.com","backend.chovychovy.xyz", "chovychovy.xyz", 
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -209,6 +209,7 @@ GH_SECRET = env("GH_SECRET")
 if not DEBUG:
     SESSION_COOKIE_DOMAIN = ".chovychovy.xyz"
     CSRF_COOKIE_DOMAIN = ".chovychovy.xyz"
+
     sentry_sdk.init(
         dsn="https://704b023376254fe5b5386ab41f49365d@o4504995787898880.ingest.sentry.io/4504995792814080",
         integrations=[
